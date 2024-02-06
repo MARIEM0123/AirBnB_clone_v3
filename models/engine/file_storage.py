@@ -12,11 +12,18 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
+<<<<<<< HEAD
+=======
+from hashlib import md5
+>>>>>>> 7d1a3551111731fe3ddf1cc53358d5a8be825e07
 
 classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d1a3551111731fe3ddf1cc53358d5a8be825e07
 class FileStorage:
     """serializes instances to a JSON file & deserializes back to instances"""
 
@@ -45,7 +52,13 @@ class FileStorage:
         """serializes __objects to the JSON file (path: __file_path)"""
         json_objects = {}
         for key in self.__objects:
+<<<<<<< HEAD
             json_objects[key] = self.__objects[key].to_dict()
+=======
+            if key == "password":
+                json_objects[key].decode()
+            json_objects[key] = self.__objects[key].to_dict(save_fs=1)
+>>>>>>> 7d1a3551111731fe3ddf1cc53358d5a8be825e07
         with open(self.__file_path, 'w') as f:
             json.dump(json_objects, f)
 
@@ -70,7 +83,10 @@ class FileStorage:
         """call reload() method for deserializing the JSON file to objects"""
         self.reload()
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d1a3551111731fe3ddf1cc53358d5a8be825e07
     def get(self, cls, id):
         """
         Returns the object based on the class name and its ID, or
@@ -100,3 +116,7 @@ class FileStorage:
             count = len(models.storage.all(cls).values())
 
         return count
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7d1a3551111731fe3ddf1cc53358d5a8be825e07
